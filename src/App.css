@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.app_title {
+color: #38CAFB;
+}
+
+li {
+list-style-type: none;
+}
