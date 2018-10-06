@@ -32,7 +32,7 @@ class RoomList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="room-list">
         {this.state.rooms.map((room, index) =>
         <div key={index} onClick={ () => this.props.handleRoomClick(room)}>{room.name}</div>
         )}

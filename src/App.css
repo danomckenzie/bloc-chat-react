@@ -29,8 +29,17 @@
 
 .app_title {
 color: #38CAFB;
+text-align: left;
+margin-left: 15px;
+}
+
+.room-list {
+text-align: left;
+margin-left: 15px;
+padding-bottom: 15px;
 }
 
 li {
 list-style-type: none;
+text-align: center;
 }
