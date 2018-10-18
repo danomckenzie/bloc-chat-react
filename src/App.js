@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RoomList from './components/RoomList.js'
 import MessageList from './components/MessageList.js'
+import User from './components/User.js'
 import * as firebase from 'firebase';
 
 <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
@@ -20,25 +21,49 @@ import * as firebase from 'firebase';
     constructor(props) {
       super(props);
       this.state = {
-        activeRoom: ''
+        activeRoom: '',
+        currentUser: '',
     };
+    this.handleRoomClick = this.handleRoomClick.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   handleRoomClick = (room) => {
-    this.setState({ activeRoom: room });
-    console.log(room);
+    this.setState({activeRoom: room});
+  }
+
+  setUser(user){
+    this.setState({currentUser: user});
   }
 
   render() {
     return (
       <div className="App">
-        <header>
-          <h1 className="app_title">Bloc Chat</h1>
-        </header>
-        <div>
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} handleRoomClick = {this.handleRoomClick.bind(this)}/>
-          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+        <div className="sidebar">
+          <header>
+            <h1 className="app_title">Bloc Chat</h1>
+          </header>
+          <div className="user-info">
+            <User
+            firebase={firebase}
+            user={this.state.currentUser}
+            setUser={this.setUser}
+            />
+          </div>
+          <div className="room-info">
+            <RoomList
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
+              handleRoomClick = {this.handleRoomClick}
+              />
+          </div>
         </div>
+          <div className="message-info">
+            <MessageList
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
+            />
+          </div>
       </div>
     );
   }
