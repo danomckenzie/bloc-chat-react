@@ -36,8 +36,8 @@ import * as firebase from 'firebase';
           <h1 className="app_title">Bloc Chat</h1>
         </header>
         <div>
-          <RoomList firebase = {firebase} activeRoom = {this.state.activeRoom} handleRoomClick = {this.handleRoomClick.bind(this)}/>
-          <MessageList firebase = {firebase} activeRoom = {this.state.activeRoom}/>
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} handleRoomClick = {this.handleRoomClick.bind(this)}/>
+          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
         </div>
       </div>
     );

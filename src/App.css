@@ -29,12 +29,12 @@
 
 .app_title {
 color: #38CAFB;
-text-align: left;
+text-align: center;
 margin-left: 15px;
 }
 
 .room-list {
-text-align: left;
+text-align: center;
 margin-left: 15px;
 padding-bottom: 15px;
 }

@@ -5,12 +5,7 @@ class MessageList extends Component {
     super(props);
     this.state = {
       messages: [],
-      newMessage: [{
-        username: '',
-        content: '',
-        roomId: '',
-        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-      }]
+      newMessageContent: "",
     };
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
@@ -23,13 +18,33 @@ class MessageList extends Component {
       this.setState({ messages: this.state.messages.concat( message ) })
     });
   }
+  handleChange(e) {
+    this.setState({ newMessage: e.target.value });
+  }
+  createNewMessage(newMessage) {
+    this.messagesRef.push({
+      content: this.state.newMessage,
+      roomId: this.props.activeRoom.key,
+      userName: '',
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+    });
+  }
 
   render() {
   return (
     <div className="message_room">
       <h2>{this.props.activeRoom ? this.props.activeRoom.name: " "}</h2>
+        <div className="newMessage-button">
+        <form onSubmit={ (e) => {
+          e.preventDefault();
+          this.createNewMessage() } }>
+
+        <input type="text" value={this.state.newMessage} onChange={ (e) => this.handleChange(e)}/>
+        <input type="submit"/>
+        </form>
+        </div>
         <ul className="message_list">
-          {this.state.messages.map((message, index) =>
+          {this.state.messages.filter(message => message.roomId == this.props.activeRoom.key).map((message, index) =>
           <div key={index}>
             <li>{message.username}</li>
             <li>{message.content}</li>
