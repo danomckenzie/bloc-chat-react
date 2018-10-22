@@ -34,6 +34,7 @@ import * as firebase from 'firebase';
 
   setUser(user){
     this.setState({currentUser: user});
+    console.log(user)
   }
 
   render() {
@@ -62,6 +63,7 @@ import * as firebase from 'firebase';
             <MessageList
               firebase={firebase}
               activeRoom={this.state.activeRoom}
+              user={this.state.currentUser}
             />
           </div>
       </div>
