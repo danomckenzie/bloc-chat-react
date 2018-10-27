@@ -4,6 +4,8 @@ import RoomList from './components/RoomList.js'
 import MessageList from './components/MessageList.js'
 import User from './components/User.js'
 import * as firebase from 'firebase';
+import Timestamp from 'react-timestamp';
+
 
 <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
   // Initialize Firebase
@@ -40,7 +42,7 @@ import * as firebase from 'firebase';
   render() {
     return (
       <div className="App">
-        <div className="sidebar">
+        <div className="sidenav">
           <header>
             <h1 className="app_title">Bloc Chat</h1>
           </header>

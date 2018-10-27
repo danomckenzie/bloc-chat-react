@@ -30,13 +30,22 @@ class RoomList extends Component {
     });
   }
 
+  deleteRoom(room){
+    this.roomsRef.child(room.key).remove();
+      const index = this.state.rooms.indexOf(room);
+      this.state.rooms.splice(index, 1);
+      this.setState({rooms: this.state.rooms})
+  }
+
   render() {
     return (
 
       <div className="room-list">
         {this.state.rooms.map((room, index) =>
-        <div key={index} onClick={ () => this.props.handleRoomClick(room)}>{room.name}</div>
-        )}
+        <div key={index} onClick={ () => this.props.handleRoomClick(room)}>{room.name}
+        <button className="DeleteButton" onClick={ () => this.deleteRoom(room)}>Delete</button>
+        </div>
+      )}
 
         <div className="newRoom-button">
         <form onSubmit={ (e) => {

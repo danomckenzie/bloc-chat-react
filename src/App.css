@@ -27,19 +27,37 @@
   to { transform: rotate(360deg); }
 }
 
+.sidenav {
+float: left;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 100%;
+background-color: #E0E1E1;
+display: block;
+}
+
 .app_title {
 color: #38CAFB;
-text-align: center;
-margin-left: 15px;
+}
+
+.user-info {
+
 }
 
 .room-list {
-text-align: center;
-margin-left: 15px;
+padding-top: 20px;
 padding-bottom: 15px;
+}
+
+.newRoom-button {
+padding-top: 15px;
+}
+
+.message-info {
+text-align: left;
+padding-top: 5px;
 }
 
 li {
 list-style-type: none;
-text-align: center;
 }
