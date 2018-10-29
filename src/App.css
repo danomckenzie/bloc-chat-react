@@ -27,10 +27,12 @@
   to { transform: rotate(360deg); }
 }
 
+/*app.js style*/
+
 .sidenav {
 float: left;
-padding-left: 30px;
-padding-right: 30px;
+padding-left: 20px;
+padding-right: 20px;
 padding-bottom: 100%;
 background-color: #E0E1E1;
 display: block;
@@ -41,10 +43,11 @@ color: #38CAFB;
 }
 
 .user-info {
-
+color: #3F3F3F;
 }
 
 .room-list {
+color: #3F3F3F;
 padding-top: 20px;
 padding-bottom: 15px;
 }
@@ -54,10 +57,26 @@ padding-top: 15px;
 }
 
 .message-info {
+color: #3F3F3F;
 text-align: left;
 padding-top: 5px;
+padding-left: 25px;
+}
+
+/*message list*/
+
+.room-name {
+color: #3F3F3F;
+}
+
+.message-room {
+padding-left: 25px;
 }
 
 li {
 list-style-type: none;
+}
+
+.message-submit {
+
 }
