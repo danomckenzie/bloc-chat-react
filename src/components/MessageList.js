@@ -32,53 +32,55 @@ class MessageList extends Component {
     this.setState({newMessage: ''});
   }
 
-   formatTime(time) {
-    let date = new Date(time);
-    let minutes = date.getMinutes();
-
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-  } 
+  formatTime(time) {
+    // let date = new Date(time);
+    // let minutes = date.getMinutes();
+    //
+    // if (minutes < 10) {
+    //   minutes = '0' + minutes;
+    // }
+    return new Date(time);
+  }
 
   deleteMessage(message){
     this.messagesRef.child(message.key).remove()
-      const index = this.state.messages.indexOf(message);
-      this.state.messages.splice(index, 1);
-      this.setState({messages: this.state.messages})
+    const index = this.state.messages.indexOf(message);
+    this.state.messages.splice(index, 1);
+    this.setState({messages: this.state.messages})
   }
 
   render() {
-  return (
-    <div className="message_room">
-      <h2 className="room-name">{this.props.activeRoom ? this.props.activeRoom.name: " "}</h2>
+    return (
+      <div className="message_room">
+        <h2 className="room-name">{this.props.activeRoom ? this.props.activeRoom.name: " "}</h2>
 
         <ul className="message_list">
           {this.state.messages.filter(message => message.roomId == this.props.activeRoom.key).map((message, index) =>
-          <div key={index}>
-            <li className="user-name">{message.userName}</li>
-            <li className="message-content">{message.content}</li>
-            <li className="message-time"><Timestamp time={(message.sentAt)} />
-            <button className="DeleteButton" onClick={ () => this.deleteMessage(message)}>Delete</button>
+            <div key={index}>
+              <li className="user-name">{message.userName}</li>
+              <li className="message-content">{message.content}</li>
+              <li className="message-time"><Timestamp time={new Date(message.sentAt)}  format='full' />
+              <button className="DeleteButton" onClick={ () => this.deleteMessage(message)}>Delete</button>
             </li>
           </div>
-          )}
+        )}
         <div className="message-submit">
           <div className="newMessage-button">
             <form onSubmit={ (e) => {
               e.preventDefault();
-              this.createNewMessage() } }>
+              this.createNewMessage() }
+            }>
 
             <input type="text" value={this.state.newMessage} onChange={ (e) => this.handleChange(e)}/>
             <input type="submit"/>
-            </form>
-          </div>
+          </form>
         </div>
-        </ul>
-
       </div>
-      );
-  }
+    </ul>
+
+  </div>
+);
+}
 }
 
 export default MessageList;
